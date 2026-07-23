@@ -1,34 +1,57 @@
 /**
- * Logos de tecnología (Devicon), auto-alojados en `public/devicon/`.
+ * Logos de tecnología, auto-alojados (no CDN ni fuentes en runtime).
  *
- * Se descargaron solo los SVG que se usan (no la fuente entera ni un CDN) para
- * que carguen rápido y el sitio no dependa de un servicio externo en runtime.
- * Devicon cubre lenguajes/frameworks/herramientas; lo que no tiene logo —SCPI,
- * RAG, MCP, PLC, SCADA, ANSYS…— se queda como chip de texto.
+ * Dos fuentes:
+ *  - `public/devicon/` — Devicon, logos **a color** (lenguajes/frameworks).
+ *  - `public/logos/`   — Simple Icons, logos **monocromos** tintados en claro,
+ *    para lo que Devicon no tiene (OpenAI, LangChain, n8n, Qdrant, Power BI…).
+ *
+ * Lo que no es un producto con logo —RAG, LLMs & Prompt Engineering, APIs REST,
+ * SCPI, PLC, SCADA, ANSYS, LlamaIndex, LangFuse— se queda como chip de texto.
  */
+
+/** Helper para la marquesina del hero (solo Devicon, por slug). */
 export const deviconSrc = (slug: string) => `/devicon/${slug}.svg`
 
 /**
- * Mapa de nombre de skill (tal cual en `cv.ts`) → slugs de Devicon.
- * Un chip combinado («Spark / Hadoop») muestra los dos logos.
+ * Mapa **por parte** de skill → ruta de logo.
+ *
+ * La clave es cada tecnología individual, no el nombre compuesto. Así, para un
+ * chip como «SQL / PostgreSQL / MySQL», el componente parte el nombre por `/` y
+ * pone cada logo pegado a SU palabra ([🐘] PostgreSQL / [🐬] MySQL), en vez de
+ * amontonar los logos al inicio. Las partes sin logo (SQL, RAG, SCPI…) solo
+ * muestran texto.
  */
-export const skillIcons: Record<string, string[]> = {
-  Python: ['python'],
-  JavaScript: ['javascript'],
-  React: ['react'],
-  FastAPI: ['fastapi'],
-  'HTML & CSS': ['html5'],
-  'Tailwind CSS': ['tailwindcss'],
-  Bootstrap: ['bootstrap'],
-  Java: ['java'],
-  'Flutter / Android Studio': ['flutter', 'androidstudio'],
-  Git: ['git'],
-  Postman: ['postman'],
-  TypeScript: ['typescript'],
-  Angular: ['angularjs'],
-  'Node.js': ['nodejs'],
-  'SQL / PostgreSQL / MySQL': ['postgresql', 'mysql'],
-  'Supabase / Firebase': ['supabase', 'firebase'],
-  'Spark / Hadoop': ['apachespark', 'hadoop'],
-  MATLAB: ['matlab'],
+export const partIcon: Record<string, string> = {
+  // Devicon (a color)
+  Python: '/devicon/python.svg',
+  JavaScript: '/devicon/javascript.svg',
+  React: '/devicon/react.svg',
+  FastAPI: '/devicon/fastapi.svg',
+  'HTML & CSS': '/devicon/html5.svg',
+  'Tailwind CSS': '/devicon/tailwindcss.svg',
+  Bootstrap: '/devicon/bootstrap.svg',
+  Java: '/devicon/java.svg',
+  Flutter: '/devicon/flutter.svg',
+  'Android Studio': '/devicon/androidstudio.svg',
+  Git: '/devicon/git.svg',
+  Postman: '/devicon/postman.svg',
+  TypeScript: '/devicon/typescript.svg',
+  Angular: '/devicon/angularjs.svg',
+  'Node.js': '/devicon/nodejs.svg',
+  PostgreSQL: '/devicon/postgresql.svg',
+  MySQL: '/devicon/mysql.svg',
+  Supabase: '/devicon/supabase.svg',
+  Firebase: '/devicon/firebase.svg',
+  Spark: '/devicon/apachespark.svg',
+  Hadoop: '/devicon/hadoop.svg',
+  MATLAB: '/devicon/matlab.svg',
+  // Simple Icons (monocromo tintado)
+  'OpenAI API': '/logos/openai.svg',
+  LangChain: '/logos/langchain.svg',
+  CrewAI: '/logos/crewai.svg',
+  MCP: '/logos/modelcontextprotocol.svg',
+  n8n: '/logos/n8n.svg',
+  Qdrant: '/logos/qdrant.svg',
+  'Power BI': '/logos/powerbi.svg',
 }
