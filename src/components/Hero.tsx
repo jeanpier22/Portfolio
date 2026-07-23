@@ -1,4 +1,4 @@
-import { ArrowDown, MapPin, Sparkles } from 'lucide-react'
+import { ArrowDown, Download, MapPin, Sparkles } from 'lucide-react'
 import { perfil, contacto } from '../data/cv'
 import { GitHubIcon, LinkedInIcon } from './ui'
 
@@ -57,9 +57,19 @@ export function Hero() {
               Ver proyectos
               <ArrowDown className="size-4" />
             </a>
+            {/* PDF servido desde public/. Se regenera con `npm run pdf` en cv-app
+                y se vuelve a copiar aquí; es una copia estática a propósito. */}
+            <a
+              href="./CV-Jeanpier-Ancori-Sanchez.pdf"
+              download="CV - Jeanpier Ancori Sanchez.pdf"
+              className="border-hair text-fg hover:border-accent/50 inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-colors"
+            >
+              <Download className="size-4" />
+              Descargar CV
+            </a>
             <a
               href="#contacto"
-              className="border-hair text-fg hover:border-accent/50 inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-colors"
+              className="text-fg-soft hover:text-fg inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold transition-colors"
             >
               Contáctame
             </a>
