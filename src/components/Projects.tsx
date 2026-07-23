@@ -1,4 +1,4 @@
-import { Radar, Droplets, ExternalLink } from 'lucide-react'
+import { Radar, Droplets } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { proyectos } from '../data/cv'
 import { Chip, Figura, Section, SectionHeader } from './ui'
@@ -103,25 +103,6 @@ export function Projects() {
             </article>
           )
         })}
-      </div>
-
-      {/* Puente hacia el repositorio: los proyectos de código sí son mostrables. */}
-      <div className="glass mt-8 flex flex-col items-center justify-between gap-4 p-6 sm:flex-row">
-        <div>
-          <h3 className="text-fg text-base font-bold">¿Y el código?</h3>
-          <p className="text-fg-soft mt-1 text-sm">
-            La investigación biomédica es confidencial, pero mis proyectos de software y
-            experimentos de IA están en GitHub.
-          </p>
-        </div>
-        <a
-          href="https://github.com/jeanpier22"
-          target="_blank"
-          rel="noreferrer"
-          className="border-hair text-fg hover:border-accent/50 inline-flex shrink-0 items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-semibold transition-colors"
-        >
-          Ver GitHub <ExternalLink className="size-4" />
-        </a>
       </div>
     </Section>
   )
