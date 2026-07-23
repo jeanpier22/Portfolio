@@ -9,6 +9,18 @@ export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
 
+  // Build multi-página: el portafolio (index.html) y el CV imprimible (cv.html)
+  // son dos entradas independientes, cada una con su propio CSS. Comparten los
+  // datos de src/data/cv.ts, así que el CV siempre refleja lo último al desplegar.
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        cv: 'cv.html',
+      },
+    },
+  },
+
   server: {
     host: true,
     // Se listan los dominios de túnel en vez de `true` para no exponer el

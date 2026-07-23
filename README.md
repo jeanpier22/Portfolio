@@ -17,17 +17,33 @@ npm run lint     # oxlint
 
 ## Arquitectura
 
-- **`src/data/cv.ts`** — el contenido. Es una **copia** de la fuente de verdad
-  del `cv-app`. Todo el texto de las secciones (perfil, experiencia, proyectos,
-  skills, formación) sale de aquí; los componentes no llevan texto hardcodeado.
-  > ⚠️ Al ser copia, hoy hay **dos** `cv.ts` (este y el del CV). Si cambias uno,
-  > copia el otro. Cuando quieras eliminar esa duplicación, el paso limpio es
-  > extraer `cv.ts` a un paquete compartido que ambos apps importen.
-- **`src/index.css`** — sistema de diseño en `@theme`: colores, tipografías y
-  utilidades (`.glass`, `.card-hover`, `.reveal`, `.text-gradient`).
-- **`src/components/ui.tsx`** — primitivas compartidas: `Section`, `SectionHeader`,
-  `Chip`, `Lettermark`, `Figura` (placeholder de imagen) y el hook `useReveal`.
-- **`src/components/*.tsx`** — una sección por archivo, ensambladas en `App.tsx`.
+Dos páginas, **una sola fuente de contenido**. Build multi-página de Vite:
+
+- **`index.html`** → el portafolio (tema oscuro). Entrada `src/main.tsx`.
+- **`cv.html`** → el CV imprimible en A4 (papel blanco). Entrada `src/cv/main.tsx`.
+  El botón «Descargar CV» del hero lo abre; ahí se exporta el PDF con
+  `window.print()` (texto vectorial, legible por ATS).
+
+Piezas clave:
+
+- **`src/data/cv.ts`** — **la única fuente de verdad del contenido.** La usan
+  tanto las secciones del portafolio como el CV. Editar aquí actualiza los dos a
+  la vez: al desplegar, el CV descargable siempre refleja lo último.
+- **`src/cv/`** — el generador del CV, portado desde el proyecto `cv-app`. Sus
+  componentes importan `./data/cv`, que es un **re-export** (`src/cv/data/cv.ts`)
+  del `src/data/cv.ts` de arriba — por eso no hay contenido duplicado.
+  `src/cv/data/perfiles.ts` decide qué entra en cada versión del CV.
+- **`src/index.css`** — sistema de diseño del portafolio en `@theme` (tema
+  oscuro): colores, tipografías y utilidades (`.glass`, `.card-hover`, `.reveal`).
+- **`src/cv/index.css`** — el CSS del CV (papel A4, reglas de impresión). Es
+  independiente del anterior: cada página carga solo el suyo.
+- **`src/components/ui.tsx`** — primitivas del portafolio: `Section`,
+  `SectionHeader`, `Chip`, `Lettermark`, `Figura` y el hook `useReveal`.
+- **`src/components/*.tsx`** — una sección del portafolio por archivo, en `App.tsx`.
+
+> El proyecto `cv-app` (repo aparte) sigue existiendo como el CV independiente,
+> pero el portafolio ya no depende de él: tiene su propia copia del generador y
+> su propia fuente de datos.
 
 ### Reglas de contenido heredadas del CV
 

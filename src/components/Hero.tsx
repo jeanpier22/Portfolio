@@ -57,11 +57,13 @@ export function Hero() {
               Ver proyectos
               <ArrowDown className="size-4" />
             </a>
-            {/* PDF servido desde public/. Se regenera con `npm run pdf` en cv-app
-                y se vuelve a copiar aquí; es una copia estática a propósito. */}
+            {/* Abre el CV (cv.html), que se renderiza desde el MISMO src/data/cv.ts
+                que el portafolio: al desplegar siempre está actualizado. Desde ahí
+                se descarga el PDF con el botón "Descargar PDF" (window.print). */}
             <a
-              href="./CV-Jeanpier-Ancori-Sanchez.pdf"
-              download="CV - Jeanpier Ancori Sanchez.pdf"
+              href="./cv.html"
+              target="_blank"
+              rel="noreferrer"
               className="border-hair text-fg hover:border-accent/50 inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-colors"
             >
               <Download className="size-4" />

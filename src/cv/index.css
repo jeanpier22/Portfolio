@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+/* Las fuentes se cargan con <link> en index.html, no con @import: PostCSS exige
+   que todo @import preceda al resto de reglas, y `@import 'tailwindcss'` se
+   expande antes. El <link> además evita la cascada de peticiones del @import. */
+
+/* ---------------------------------------------------------------------------
+   Design tokens (Tailwind v4 usa @theme en lugar de tailwind.config.js)
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    'Plus Jakarta Sans', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --color-ink: #0b1220;
+  --color-ink-soft: #1e293b;
+  --color-body: #475569;
+  --color-muted: #7c8aa0;
+  --color-line: #e4e9f0;
+  --color-accent: #0ea5e9;
+  --color-accent-deep: #0369a1;
+  --color-paper: #ffffff;
+
+  /* Medidas de página A4 */
+  --size-page-w: 210mm;
+  --size-page-h: 297mm;
+
+  /* -------------------------------------------------------------------------
+     Escala tipográfica.
+
+     Cinco tamaños semánticos, cada uno con su interlineado. Los componentes
+     usan `text-cuerpo`, `text-nota`… y NUNCA `text-[10.5px] leading-[1.55]`:
+     así la densidad del CV se regula desde este bloque y no archivo por
+     archivo. Los interlineados son ajustados a propósito — en un documento de
+     una columna estrecha, 1.4 se lee mejor que 1.7 y ahorra media línea por
+     párrafo, que es lo que permite subir el cuerpo de letra sin desbordar A4.
+  ------------------------------------------------------------------------- */
+  --text-micro: 8.5px; /* periodos, contexto, notas al pie */
+  --text-micro--line-height: 1.35;
+
+  --text-nota: 10.5px; /* viñetas de apoyo, chips, contacto */
+  --text-nota--line-height: 1.4;
+
+  --text-cuerpo: 11.5px; /* perfil y logros: el texto que de verdad se lee */
+  --text-cuerpo--line-height: 1.42;
+
+  --text-rotulo: 10px; /* cabeceras de sección en mayúsculas */
+  --text-rotulo--line-height: 1.2;
+
+  --text-puesto: 13.5px; /* cargo dentro de cada experiencia */
+  --text-puesto--line-height: 1.2;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, #1b2a45 0%, transparent 45%),
+    radial-gradient(circle at 85% 100%, #0d3b52 0%, transparent 45%), #0b1220;
+  font-family: var(--font-sans);
+  color: var(--color-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hoja A4. En pantalla se muestra como una tarjeta flotante; al imprimir
+   ocupa exactamente una página. */
+.page {
+  width: var(--size-page-w);
+  min-height: var(--size-page-h);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 30px 60px -12px rgb(0 0 0 / 0.55),
+    0 0 0 1px rgb(255 255 255 / 0.06);
+}
+
+/* Evita que una tarjeta se corte a la mitad entre dos páginas. */
+.keep {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Franja decorativa que refuerza la identidad en ambas páginas. */
+.rail {
+  background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Impresión / exportación a PDF
+--------------------------------------------------------------------------- */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  /* Obliga a Chrome a imprimir fondos y colores tal como se ven. */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-stack {
+    display: block !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .page {
+    width: var(--size-page-w);
+    height: var(--size-page-h);
+    min-height: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .page:last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* Los enlaces deben verse como texto normal en papel. */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
