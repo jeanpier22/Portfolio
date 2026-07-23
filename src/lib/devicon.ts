@@ -46,9 +46,14 @@ export const partIcon: Record<string, string> = {
   Spark: '/devicon/apachespark.svg',
   Hadoop: '/devicon/hadoop.svg',
   MATLAB: '/devicon/matlab.svg',
-  // Simple Icons (monocromo tintado)
+  // IA: Lobe Icons a color donde se ve bien; Simple Icons / Lobe mono tintado en
+  // claro para los brands monocromos o de color muy oscuro (openai, mcp,
+  // langgraph, crewai). Qdrant y Power BI no están en Lobe → Simple Icons.
   'OpenAI API': '/logos/openai.svg',
   LangChain: '/logos/langchain.svg',
+  LangGraph: '/logos/langgraph.svg',
+  LlamaIndex: '/logos/llamaindex.svg',
+  LangFuse: '/logos/langfuse.svg',
   CrewAI: '/logos/crewai.svg',
   MCP: '/logos/modelcontextprotocol.svg',
   n8n: '/logos/n8n.svg',
