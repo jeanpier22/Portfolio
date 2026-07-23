@@ -102,11 +102,11 @@ export function Hero() {
           </div>
           <div className="glass absolute -bottom-5 -left-5 rounded-2xl px-4 py-3 shadow-xl">
             <p className="text-fg text-2xl font-extrabold">+3 años</p>
-            <p className="text-fg-muted text-xs">formando en desarrollo</p>
+            <p className="text-fg-muted text-xs">desarrollando software</p>
           </div>
           <div className="glass absolute -top-4 -right-4 rounded-2xl px-4 py-3 shadow-xl">
-            <p className="text-accent text-2xl font-extrabold">MABIS</p>
-            <p className="text-fg-muted text-xs">software biomédico</p>
+            <p className="text-accent text-2xl font-extrabold">Developer</p>
+            <p className="text-fg-muted text-xs">& Ingeniero electrónico</p>
           </div>
         </div>
       </div>
