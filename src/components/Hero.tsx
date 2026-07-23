@@ -1,19 +1,26 @@
 import { ArrowDown, Download, MapPin, Sparkles } from 'lucide-react'
 import { perfil, contacto } from '../data/cv'
+import { deviconSrc } from '../lib/devicon'
 import { GitHubIcon, LinkedInIcon } from './ui'
 
-/** Tecnologías que desfilan en la marquesina. Puro escaparate, no exhaustivo. */
+/**
+ * Tecnologías que desfilan en la marquesina, con logo. Puro escaparate, no
+ * exhaustivo: se eligen las que tienen logo de Devicon para que el carrusel sea
+ * consistente (todas con icono).
+ */
 const STACK = [
-  'Python',
-  'React',
-  'FastAPI',
-  'OpenAI API',
-  'LangGraph',
-  'SCPI',
-  'PostgreSQL',
-  'IA aplicada',
-  'Automatización',
-  'IoT',
+  { name: 'Python', slug: 'python' },
+  { name: 'TypeScript', slug: 'typescript' },
+  { name: 'React', slug: 'react' },
+  { name: 'Node.js', slug: 'nodejs' },
+  { name: 'FastAPI', slug: 'fastapi' },
+  { name: 'PostgreSQL', slug: 'postgresql' },
+  { name: 'Tailwind', slug: 'tailwindcss' },
+  { name: 'Flutter', slug: 'flutter' },
+  { name: 'Java', slug: 'java' },
+  { name: 'Git', slug: 'git' },
+  { name: 'Bootstrap', slug: 'bootstrap' },
+  { name: 'JavaScript', slug: 'javascript' },
 ]
 
 export function Hero() {
@@ -129,9 +136,10 @@ export function Hero() {
           {[...STACK, ...STACK].map((tech, i) => (
             <span
               key={i}
-              className="text-fg-soft border-hair bg-white/[0.03] shrink-0 rounded-full border px-4 py-1.5 font-mono text-sm"
+              className="text-fg-soft border-hair bg-white/[0.03] inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-sm"
             >
-              {tech}
+              <img src={deviconSrc(tech.slug)} alt="" aria-hidden className="size-4" />
+              {tech.name}
             </span>
           ))}
         </div>

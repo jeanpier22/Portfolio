@@ -1,6 +1,7 @@
 import { Brain, Cog, Code2, Database } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { skills, idiomas } from '../data/cv'
+import { deviconSrc, skillIcons } from '../lib/devicon'
 import { Section, SectionHeader } from './ui'
 
 /** Icono por grupo, emparejado con el título tal como aparece en `cv.ts`. */
@@ -47,17 +48,31 @@ export function Skills() {
                 {grupo.titulo}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {grupo.items.map((item) => (
-                  <span
-                    key={item.nombre}
-                    className={`rounded-lg border px-2.5 py-1 font-mono text-xs font-medium ${nivelClase(item.estado)}`}
-                  >
-                    {item.nombre}
-                    {item.estado === 'formacion' && (
-                      <span className="ml-1 opacity-60">· en formación</span>
-                    )}
-                  </span>
-                ))}
+                {grupo.items.map((item) => {
+                  const icons = skillIcons[item.nombre] ?? []
+                  const dim = item.estado === 'formacion'
+                  return (
+                    <span
+                      key={item.nombre}
+                      className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 ${nivelClase(item.estado)}`}
+                    >
+                      {/* Logo Devicon donde existe; atenuado si está en formación,
+                          para respetar la regla de no venderlo como consolidado. */}
+                      {icons.map((slug) => (
+                        <img
+                          key={slug}
+                          src={deviconSrc(slug)}
+                          alt=""
+                          aria-hidden
+                          loading="lazy"
+                          className={`size-4 ${dim ? 'opacity-50 grayscale' : ''}`}
+                        />
+                      ))}
+                      <span className="font-mono text-xs font-medium">{item.nombre}</span>
+                      {dim && <span className="text-xs opacity-60">· en formación</span>}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           )
