@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustración conceptual: desplazamiento del parámetro S11 según la concentración de arsénico">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1729"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <pattern id="grid2" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M25 0H0V25" fill="none" stroke="#1e2b45" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#bg2)"/>
+  <rect width="400" height="300" fill="url(#grid2)"/>
+
+  <!-- Ejes -->
+  <g stroke="#3a4a68" stroke-width="1.5">
+    <line x1="46" y1="34" x2="46" y2="250"/>
+    <line x1="46" y1="250" x2="372" y2="250"/>
+  </g>
+  <text x="20" y="42" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6b7a91">S11</text>
+  <text x="372" y="268" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6b7a91">Frecuencia (GHz)</text>
+
+  <!-- Curva base (agua limpia) -->
+  <path d="M52,80 C120,84 150,206 186,206 C222,206 252,96 366,92"
+        fill="none" stroke="#64748b" stroke-width="2.5" stroke-opacity="0.8"/>
+  <!-- Curva desplazada (con arsénico): resonancia corrida en frecuencia -->
+  <path d="M52,92 C150,96 196,216 236,216 C276,216 316,108 366,104"
+        fill="none" stroke="#38bdf8" stroke-width="2.8"/>
+
+  <!-- Marcadores de mínimo -->
+  <g>
+    <line x1="186" y1="206" x2="186" y2="250" stroke="#64748b" stroke-width="1" stroke-dasharray="3 4" stroke-opacity="0.7"/>
+    <circle cx="186" cy="206" r="4.5" fill="#94a3b8"/>
+    <line x1="236" y1="216" x2="236" y2="250" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3 4" stroke-opacity="0.8"/>
+    <circle cx="236" cy="216" r="5" fill="#7dd3fc"/>
+  </g>
+
+  <!-- Delta f -->
+  <g>
+    <line x1="186" y1="238" x2="236" y2="238" stroke="#38bdf8" stroke-width="1.5"/>
+    <path d="M186,238 l6,-3 v6 z" fill="#38bdf8"/>
+    <path d="M236,238 l-6,-3 v6 z" fill="#38bdf8"/>
+    <text x="211" y="232" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#7dd3fc">Δf</text>
+  </g>
+
+  <!-- Gota de agua -->
+  <g transform="translate(322,54)">
+    <path d="M12,0 C20,12 24,18 24,26 A12,12 0 1 1 0,26 C0,18 4,12 12,0 Z"
+          fill="#0ea5e9" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="12" y="30" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7dd3fc">As</text>
+  </g>
+  <text x="366" y="42" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6b7a91">hasta 64 ppb</text>
+</svg>

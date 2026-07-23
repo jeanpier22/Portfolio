@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustración conceptual de imagen biomédica por microondas — MABIS">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1729"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M25 0H0V25" fill="none" stroke="#1e2b45" stroke-width="1" stroke-opacity="0.55"/>
+    </pattern>
+    <radialGradient id="tissue" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#0ea5e9" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="anom" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fecaca"/>
+      <stop offset="45%" stop-color="#f87171" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+
+  <!-- Frentes de onda concéntricos que emite el arreglo de antenas -->
+  <g fill="none" stroke="#38bdf8">
+    <circle cx="200" cy="150" r="38" stroke-opacity="0.55"/>
+    <circle cx="200" cy="150" r="66" stroke-opacity="0.36"/>
+    <circle cx="200" cy="150" r="94" stroke-opacity="0.22"/>
+    <circle cx="200" cy="150" r="122" stroke-opacity="0.12"/>
+  </g>
+
+  <!-- Tejido reconstruido y anomalía detectada -->
+  <circle cx="200" cy="150" r="92" fill="url(#tissue)"/>
+  <circle cx="226" cy="131" r="30" fill="url(#anom)"/>
+  <circle cx="226" cy="131" r="4.5" fill="#fee2e2"/>
+
+  <!-- Anillo del arreglo de antenas (transductores alrededor del tejido) -->
+  <circle cx="200" cy="150" r="120" fill="none" stroke="#1e3a5f" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <g fill="#7dd3fc">
+    <circle cx="320.0" cy="150.0" r="4.5"/>
+    <circle cx="284.9" cy="234.9" r="4.5"/>
+    <circle cx="200.0" cy="270.0" r="4.5"/>
+    <circle cx="115.1" cy="234.9" r="4.5"/>
+    <circle cx="80.0"  cy="150.0" r="4.5"/>
+    <circle cx="115.1" cy="65.1"  r="4.5"/>
+    <circle cx="200.0" cy="30.0"  r="4.5"/>
+    <circle cx="284.9" cy="65.1"  r="4.5"/>
+  </g>
+
+  <!-- Retícula central -->
+  <g stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1">
+    <line x1="200" y1="120" x2="200" y2="180"/>
+    <line x1="170" y1="150" x2="230" y2="150"/>
+  </g>
+
+  <!-- Rótulo -->
+  <text x="20" y="284" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2" fill="#6b7a91">RF · MICROWAVE IMAGING</text>
+  <text x="380" y="284" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#f87171" letter-spacing="1">● anomalía</text>
+</svg>

@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Sistema de diseño del portafolio (Tailwind v4 — @theme, sin config.js)
+
+   Reutiliza la identidad del cv-app (ink / accent sky-blue, Plus Jakarta Sans,
+   JetBrains Mono) pero adaptada a PANTALLA: fondo oscuro, tipografía más grande
+   y tokens de superficie/borde propios de una web, no de un A4 impreso.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    'Plus Jakarta Sans', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Paleta base heredada del CV. En el portafolio el papel es oscuro, así que
+     los grises se reinterpretan como capas sobre negro. */
+  --color-ink: #0b1220; /* fondo base */
+  --color-ink-2: #0e1729; /* superficie elevada (tarjetas) */
+  --color-accent: #38bdf8; /* sky-400: más luminoso que el del CV para brillar en oscuro */
+  --color-accent-deep: #0ea5e9;
+  --color-accent-soft: #7dd3fc;
+
+  /* Texto sobre fondo oscuro */
+  --color-fg: #e7ecf4; /* titulares y texto fuerte */
+  --color-fg-soft: #aab6c9; /* cuerpo */
+  --color-fg-muted: #6b7a91; /* metadatos, notas */
+  --color-hair: #1e2b45; /* líneas y bordes sutiles */
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Compensa la barra de navegación fija al saltar a un ancla. */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* El mismo gradiente radial de la marca, fijo detrás de todo el scroll. */
+  background:
+    radial-gradient(1200px 600px at 12% -5%, #17243e 0%, transparent 55%),
+    radial-gradient(1000px 700px at 92% 8%, #0c3a52 0%, transparent 50%),
+    var(--color-ink);
+  background-attachment: fixed;
+  color: var(--color-fg-soft);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+  color: #fff;
+}
+
+/* Barra de scroll discreta, en la clave de color de la marca. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hair);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3b5e;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilidades compartidas
+--------------------------------------------------------------------------- */
+
+/* Título con degradado — se usa en el nombre del hero y en acentos puntuales. */
+.text-gradient {
+  background: linear-gradient(120deg, var(--color-accent-soft), var(--color-accent-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Tarjeta de vidrio: la superficie base de todo el portafolio. */
+.glass {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-ink-2) 92%, white 8%),
+    var(--color-ink-2)
+  );
+  border: 1px solid var(--color-hair);
+  border-radius: 1rem;
+}
+
+/* Aro luminoso al pasar el cursor sobre tarjetas interactivas. */
+.card-hover {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--color-accent) 45%, var(--color-hair));
+  box-shadow: 0 18px 40px -20px color-mix(in oklab, var(--color-accent) 60%, transparent);
+}
+
+/* Rótulo de sección en mayúsculas (kicker). */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Revelado al hacer scroll. El estado inicial lo aplica useReveal; la clase
+   .is-visible la añade el IntersectionObserver cuando el bloque entra en vista.
+   Se respeta prefers-reduced-motion abajo. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Marquesina de tecnologías del hero. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}

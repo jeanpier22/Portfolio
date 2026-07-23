@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" role="img" aria-label="Ilustración conceptual: desarrollando software frente al monitor">
+  <defs>
+    <linearGradient id="cbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101c33"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <pattern id="cgrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#1e2b45" stroke-width="1" stroke-opacity="0.4"/>
+    </pattern>
+    <radialGradient id="cglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#0ea5e9" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="320" height="400" fill="url(#cbg)"/>
+  <rect width="320" height="400" fill="url(#cgrid)"/>
+
+  <!-- Resplandor del monitor -->
+  <ellipse cx="212" cy="196" rx="120" ry="110" fill="url(#cglow)"/>
+
+  <!-- Glifos de código flotando -->
+  <g font-family="'JetBrains Mono', monospace" fill="#38bdf8" fill-opacity="0.5">
+    <text x="40" y="60" font-size="20">&lt;/&gt;</text>
+    <text x="250" y="52" font-size="18" fill-opacity="0.35">{ }</text>
+    <text x="60" y="110" font-size="14" fill-opacity="0.3">def</text>
+  </g>
+  <g fill="#7dd3fc" fill-opacity="0.5">
+    <circle cx="285" cy="120" r="2.5"/>
+    <circle cx="36" cy="150" r="2"/>
+    <circle cx="300" cy="210" r="2"/>
+  </g>
+
+  <!-- Silla (detrás de la persona) -->
+  <rect x="58" y="176" width="16" height="108" rx="8" fill="#182338"/>
+
+  <!-- Persona: silueta de perfil, sin rostro -->
+  <g fill="#334155">
+    <!-- cabeza -->
+    <circle cx="96" cy="160" r="24"/>
+    <!-- torso y regazo sentado -->
+    <path d="M74,182 C64,214 64,254 72,282 L156,282 L156,266 C132,262 124,240 124,214 C124,198 116,188 106,184 Z"/>
+  </g>
+  <!-- brazo hacia el teclado -->
+  <path d="M112,198 L140,224 L186,262" fill="none" stroke="#3b4a63" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="190" cy="264" r="9" fill="#3b4a63"/>
+  <!-- pierna / pie -->
+  <path d="M156,278 L156,300" stroke="#334155" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Escritorio -->
+  <rect x="18" y="296" width="284" height="12" rx="4" fill="#1f2b45"/>
+  <rect x="18" y="296" width="284" height="2" fill="#2a3b5e"/>
+
+  <!-- Monitor -->
+  <rect x="196" y="270" width="12" height="26" fill="#1e293b"/>
+  <ellipse cx="202" cy="296" rx="26" ry="4" fill="#1e293b"/>
+  <rect x="150" y="150" width="145" height="120" rx="10" fill="#1e293b" stroke="#2a3b5e" stroke-width="1.5"/>
+  <rect x="157" y="157" width="131" height="106" rx="5" fill="#0b1220"/>
+  <!-- código en pantalla -->
+  <g>
+    <rect x="167" y="170" width="34" height="6" rx="3" fill="#7dd3fc"/>
+    <rect x="207" y="170" width="58" height="6" rx="3" fill="#334155"/>
+    <rect x="177" y="185" width="46" height="6" rx="3" fill="#475569"/>
+    <rect x="229" y="185" width="44" height="6" rx="3" fill="#334155"/>
+    <rect x="177" y="200" width="90" height="6" rx="3" fill="#38bdf8" fill-opacity="0.65"/>
+    <rect x="167" y="215" width="30" height="6" rx="3" fill="#7dd3fc"/>
+    <rect x="203" y="215" width="52" height="6" rx="3" fill="#334155"/>
+    <rect x="177" y="230" width="64" height="6" rx="3" fill="#475569"/>
+    <rect x="167" y="245" width="24" height="6" rx="3" fill="#38bdf8" fill-opacity="0.65"/>
+    <rect x="197" y="245" width="9" height="6" rx="1" fill="#7dd3fc"/>
+  </g>
+
+  <!-- Teclado -->
+  <rect x="150" y="286" width="96" height="8" rx="3" fill="#223050"/>
+
+  <!-- Taza con vapor -->
+  <g>
+    <rect x="260" y="278" width="16" height="16" rx="3" fill="#334155"/>
+    <path d="M276,282 q6,2 0,8" fill="none" stroke="#334155" stroke-width="2.5"/>
+    <path d="M266,272 q3,-4 0,-8 M271,272 q3,-4 0,-8" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Planta -->
+  <g transform="translate(286,270)">
+    <path d="M6,26 L18,26 L16,10 L8,10 Z" fill="#223050"/>
+    <g fill="#2dd4bf" fill-opacity="0.85">
+      <path d="M12,10 C4,4 2,-6 8,-12 C12,-4 14,2 12,10 Z"/>
+      <path d="M12,10 C20,4 22,-4 17,-11 C13,-4 12,2 12,10 Z"/>
+      <path d="M12,10 C12,0 12,-8 12,-16 C15,-8 15,0 12,10 Z" fill-opacity="0.7"/>
+    </g>
+  </g>
+
+  <text x="20" y="384" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="1.5" fill="#6b7a91">// building software</text>
+</svg>
